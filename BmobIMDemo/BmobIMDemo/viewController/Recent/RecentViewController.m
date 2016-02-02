@@ -29,7 +29,7 @@ static NSString *RecentCellID = @"RecentCellID";
     _dataArray = [[NSMutableArray alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadRecentConversations) name:kNewMessageFromer object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadRecentConversations) name:kNewMessagesNotifacation object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

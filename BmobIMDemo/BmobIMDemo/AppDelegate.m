@@ -33,7 +33,7 @@
     [self.sharedIM registerWithAppKey:@"c31750019beab2b4a802ee61b1fd0e9c"];
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
+    self.token = @"";
     BmobUser *user = [BmobUser getCurrentUser];
     if (user) {
         self.userId = user.objectId;

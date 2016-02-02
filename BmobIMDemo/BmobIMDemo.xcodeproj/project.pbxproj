@@ -23,8 +23,8 @@
 		BE675B091C46398200BB2546 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE675B081C46398200BB2546 /* Foundation.framework */; };
 		BE675B0B1C4639A000BB2546 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE675B0A1C4639A000BB2546 /* CoreFoundation.framework */; };
 		BE675B1A1C463E4B00BB2546 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE675B191C463E4B00BB2546 /* SystemConfiguration.framework */; };
+		BE68D0CB1C605CC600A9175D /* BmobIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE68D0CA1C605CC600A9175D /* BmobIMSDK.framework */; };
 		BE72F2EC1C5AFB76006DDFED /* RecentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72F2EB1C5AFB76006DDFED /* RecentTableViewCell.m */; };
-		BE7951431C5F1BB5009E499C /* BmobIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7951421C5F1BB5009E499C /* BmobIMSDK.framework */; };
 		BE8D8D871C5082D4007E0B03 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8D8D861C5082D4007E0B03 /* ChatViewController.m */; };
 		BE8D8D921C50DA7F007E0B03 /* ChatBottomControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8D8D911C50DA7F007E0B03 /* ChatBottomControlView.m */; };
 		BE8D8D941C50DA9E007E0B03 /* ChatBottomControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE8D8D931C50DA9E007E0B03 /* ChatBottomControlView.xib */; };
@@ -107,9 +107,9 @@
 		BE675B081C46398200BB2546 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BE675B0A1C4639A000BB2546 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		BE675B191C463E4B00BB2546 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BE68D0CA1C605CC600A9175D /* BmobIMSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobIMSDK.framework; sourceTree = "<group>"; };
 		BE72F2EA1C5AFB76006DDFED /* RecentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentTableViewCell.h; sourceTree = "<group>"; };
 		BE72F2EB1C5AFB76006DDFED /* RecentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentTableViewCell.m; sourceTree = "<group>"; };
-		BE7951421C5F1BB5009E499C /* BmobIMSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobIMSDK.framework; sourceTree = "<group>"; };
 		BE8D8D851C5082D4007E0B03 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		BE8D8D861C5082D4007E0B03 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		BE8D8D901C50DA7F007E0B03 /* ChatBottomControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBottomControlView.h; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEB7989D1C4DDAEC005C0C5A /* CoreText.framework in Frameworks */,
-				BE7951431C5F1BB5009E499C /* BmobIMSDK.framework in Frameworks */,
+				BE68D0CB1C605CC600A9175D /* BmobIMSDK.framework in Frameworks */,
 				BEB7989B1C4DDAE6005C0C5A /* QuartzCore.framework in Frameworks */,
 				BE675B1A1C463E4B00BB2546 /* SystemConfiguration.framework in Frameworks */,
 				BE675B0B1C4639A000BB2546 /* CoreFoundation.framework in Frameworks */,
@@ -305,7 +305,7 @@
 		BE675B0E1C463A3300BB2546 /* framework */ = {
 			isa = PBXGroup;
 			children = (
-				BE7951421C5F1BB5009E499C /* BmobIMSDK.framework */,
+				BE68D0CA1C605CC600A9175D /* BmobIMSDK.framework */,
 				BE675B0A1C4639A000BB2546 /* CoreFoundation.framework */,
 				BE675B081C46398200BB2546 /* Foundation.framework */,
 				BE675B061C46397800BB2546 /* UIKit.framework */,

@@ -29,5 +29,5 @@
 
 UIKIT_STATIC_INLINE NSString* BmobIMVersion()
 {
-    return @"1.0.0";
+    return @"2.0.0";
 }
