@@ -8,6 +8,9 @@
 ### 布局
 主要使用了StoryBoard和Masonry框架
 
+### 说明文档
+关于BmobIMSDK的快速入门文档，可以参考[这里](http://docs.bmob.cn/im/faststart/index.html?menukey=fast_start&key=start_im#index_iOS即时通讯服务)
+
 ### 模块
 
 项目一共分为三大模块
@@ -39,10 +42,9 @@
 
 项目尚未完成的功能有
 
-1. 联系人部分的通过关键字查找功能
-2. 设置部分的意见反馈功能
-3. 发送图片，位置，和语音文件 
-4. 附近的人
+1. 设置部分的意见反馈功能
+2. 发送图片，位置，和语音文件 
+3. 附近的人
 
 ## 第三方库
 项目用到了SDWebImage框架，Masonry框架，UITableView+FDTemplateLayoutCell框架，感谢各位大牛的开源项目，让开发变得简单

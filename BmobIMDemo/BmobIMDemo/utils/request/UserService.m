@@ -45,11 +45,12 @@
     }];
 }
 
-+(void)addUsersWithDate:(NSDate *)date keyword:(NSString *)keyword completion:(BmobObjectArrayResultBlock)block{
++(void)loadUsersWithDate:(NSDate *)date keyword:(NSString *)keyword completion:(BmobObjectArrayResultBlock)block{
     BmobQuery *query = [BmobQuery queryForUser];
     [query whereKey:@"objectId" notEqualTo:[BmobUser getCurrentUser].objectId];
     [query whereKey:@"createdAt" lessThanOrEqualTo:date];
     [query whereKey:@"username" matchesWithRegex:keyword];
+    query.limit = 20;
     [query findObjectsInBackgroundWithBlock:^(NSArray *array1, NSError *error) {
         if (error) {
             if (block) {

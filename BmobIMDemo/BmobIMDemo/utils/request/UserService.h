@@ -31,7 +31,7 @@
 +(void)loadUserWithUserId:(NSString *)objectId
                completion:(void(^)(BmobIMUserInfo *result ,NSError *error))block;
 
-+(void)addUsersWithDate:(NSDate *)date
++(void)loadUsersWithDate:(NSDate *)date
                 keyword:(NSString *)keyword
              completion:(BmobObjectArrayResultBlock)block;
 

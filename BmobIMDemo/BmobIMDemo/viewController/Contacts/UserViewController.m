@@ -53,6 +53,7 @@ static NSString *cellId = @"UserInfoCellID";
     UINib *nib = [UINib nibWithNibName:@"UserInfoTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:cellId];
     self.tableView.rowHeight = 60;
+    self.searchBar.delegate = self;
 }
 
 
@@ -109,11 +110,25 @@ static NSString *cellId = @"UserInfoCellID";
 
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-
-
+    if (searchBar.text.length > 0) {
+        [self showLoading];
+        [UserService loadUsersWithDate:[NSDate date] keyword:searchBar.text completion:^(NSArray *array, NSError *error) {
+            if (error) {
+                [self showInfomation:error.localizedDescription];
+            }else{
+//                if (array && array.count > 0) {
+                    [self.userArray setArray:array];
+                    [self.tableView reloadData];
+//                }
+                [self hideLoading];
+            }
+        } ];
+        
+    }
+    [searchBar resignFirstResponder];
 }
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBa{
-
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
 }
 
 
