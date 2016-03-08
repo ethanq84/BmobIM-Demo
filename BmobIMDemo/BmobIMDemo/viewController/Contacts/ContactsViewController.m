@@ -127,8 +127,6 @@ static NSString *cellId = @"UserInfoCellID";
     [cell setInfo:info];
     
     
-//    cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", indexPath.row];
-    
     return cell;
 }
 
@@ -137,7 +135,10 @@ static NSString *cellId = @"UserInfoCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     BmobIMUserInfo *info = self.userArray[indexPath.row];
-    [self performSegueWithIdentifier:@"toChatVC" sender:info];
+    
+    BmobIMConversation *conversation = [BmobIMConversation conversationWithId:info.userId conversationType:BmobIMConversationTypeSingle];
+    conversation.conversationTitle =  info.name;
+    [self performSegueWithIdentifier:@"toChatVC" sender:conversation];
     
 }
 
@@ -149,8 +150,8 @@ static NSString *cellId = @"UserInfoCellID";
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"toChatVC"]) {
-//        ChatViewController *cvc = segue.destinationViewController;
-        
+        ChatViewController *cvc = segue.destinationViewController;
+        cvc.conversation = sender;
     }
 }
 
