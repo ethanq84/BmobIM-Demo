@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <BmobIMSDK/BmobIMSDK.h>
+#import "Masonry.h"
+#import <BmobSDK/Bmob.h>
+#import <SDWebImage/UIButton+WebCache.h>
+#import "AppManager.h"
 
 @interface ChatView : UIView
 
@@ -15,12 +19,20 @@
 
 @property (strong, nonatomic) UILabel *timeLabel;
 
-@property (strong, nonatomic) UILabel *contentLabel;
+@property (strong, nonatomic) UIImageView *avatarBackgroundImageView;
 
-@property (strong, nonatomic) UIButton *imageButton;
+@property (strong, nonatomic) UIImageView *chatBackgroundImageView;
+
+@property (strong, nonatomic) UIView *chatContentView;
+
+
 
 @property (strong, nonatomic) BmobIMMessage *msg;
 
--(void)setMessage:(BmobIMMessage *)msg user:(BmobIMUserInfo *)userInfo;
+-(void)setMessage:(BmobIMMessage *)msg user:(BmobIMUserInfo *)userInfo ;
+
+-(void)layoutViewsSelf;
+
+-(void)layoutViewsOther;
 
 @end

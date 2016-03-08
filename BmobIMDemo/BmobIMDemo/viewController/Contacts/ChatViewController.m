@@ -7,15 +7,23 @@
 //
 
 #import "ChatViewController.h"
-#import "ChatTableViewCell.h"
+#import "TextChatTableViewCell.h"
+#import "ImageChatTableViewCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "ChatBottomControlView.h"
 #import "BmobIMDemoPCH.h"
 #import <BmobSDK/Bmob.h>
 #import "BmobIMDemoPCH.h"
+#import "ChatBottomContentView.h"
+#import "Masonry.h"
+#import "ViewUtil.h"
+#import "CommonUtil.h"
+#import "MessageService.h"
+#import "AudioTableViewCell.h"
+#import "BmobIMMessage+SubClass.h"
 
 
-@interface ChatViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+@interface ChatViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ChatBottomContolViewDelegate>
 
 @property (weak, nonatomic) IBOutlet ChatBottomControlView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint    *bottomConstraint;
@@ -27,14 +35,17 @@
 @property (strong, nonatomic) UIRefreshControl   *freshControl;
 @property (assign, nonatomic) NSUInteger         page;
 @property (assign, nonatomic) BOOL               finished;
-
+@property (strong, nonatomic) ChatBottomContentView *contentView;
 @property (strong, nonatomic) BmobIMUserInfo *userInfo;
 
 @end
 
 @implementation ChatViewController
 
-static NSString *cellID = @"ChatCellID";
+static NSString *kTextCellID = @"ChatCellID";
+static NSString *kImageCellID = @"imageChatCellID";
+static NSString *kAudioCellID = @"audioCellID";
+static CGFloat  kBottomContentViewHeight = 105.0f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,6 +68,9 @@ static NSString *cellID = @"ChatCellID";
     
     
     self.userInfo = [self.sharedIM userInfoWithUserId:self.conversation.conversationId];
+    
+    //更新缓存
+    [self.conversation updateLocalCache];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,8 +83,24 @@ static NSString *cellID = @"ChatCellID";
     [self setupRightBarButtonItem];
     self.navigationItem.title = self.conversation.conversationTitle;
     self.bottomView.textField.delegate = self;
+    self.bottomView.delegate = self;
     self.view.backgroundColor = kDefaultViewBackgroundColor;
     self.tableView.backgroundColor = kDefaultViewBackgroundColor;
+    
+    [self.bottomView.typeButton addTarget:self action:@selector(showBottomContentView) forControlEvents:UIControlEventTouchUpInside];
+    
+    _contentView = [[ChatBottomContentView alloc] init];
+    self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.contentView];
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(@0);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.top.equalTo(self.bottomView.mas_bottom);
+    }];
+    [self.contentView setupSubviews];
+    [self.contentView.photoLibButton addTarget:self action:@selector(toPhotoLib) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView.photoTakeButton addTarget:self action:@selector(toTakePhoto) forControlEvents:UIControlEventTouchUpInside];
 }
 
 
@@ -170,8 +200,22 @@ static NSString *cellID = @"ChatCellID";
 
 -(void)receiveMessage:(NSNotification *)noti{
     BmobIMMessage *message = noti.object;
+    if (message.extra[KEY_SAVEDMESSAGE] && ![message.extra[KEY_SAVEDMESSAGE] boolValue]) {
+        return;
+    }
     if ([message.fromId isEqualToString:self.conversation.conversationId]) {
-        [self.messagesArray addObject:message];
+        
+        BmobIMMessage *tmpMessage = nil;
+        if ([message.msgType isEqualToString:kMessageTypeSound]) {
+            tmpMessage = [[BmobIMAudioMessage alloc] initWithMessage:message];
+        }else if([message.msgType isEqualToString:kMessageTypeImage]){
+            tmpMessage = [[BmobIMImageMessage alloc] initWithMessage:message];
+        }else{
+            tmpMessage =  message;
+        }
+        
+        
+        [self.messagesArray addObject:tmpMessage];
         [self.tableView reloadData];
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
@@ -197,6 +241,13 @@ static NSString *cellID = @"ChatCellID";
         }
         
     }];
+    
+    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(@(0));
+    }];
+    [UIView animateWithDuration:0.5f animations:^{
+        [self.view layoutIfNeeded];
+    }];
 }
 
 -(void)hideBottomView{
@@ -208,20 +259,42 @@ static NSString *cellID = @"ChatCellID";
     }];
 }
 
+-(void)showBottomContentView{
+    [self.bottomView.textField resignFirstResponder];
+    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(@(kBottomContentViewHeight));
+    }];
+    self.bottomConstraint.constant = kBottomContentViewHeight;
+    [self.view updateConstraintsIfNeeded];
+    [UIView animateWithDuration:0.5f animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
 #pragma mark - UITableView Datasource
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
 
-    CGFloat height = [tableView fd_heightForCellWithIdentifier:cellID  configuration:^(ChatTableViewCell *cell) {
-        BmobIMMessage *msg = self.messagesArray[indexPath.row];
-        if ([self.loginUser.objectId isEqualToString:msg.fromId]) {
-            [cell setMsg:msg userInfo:nil] ;
-        }else{
-            [cell setMsg:msg userInfo:self.userInfo] ;
-        }
-        
-    }];
+    CGFloat height = 0;
+    BmobIMMessage *msg = self.messagesArray[indexPath.row];
+    
+    if ([msg.msgType isEqualToString:kMessageTypeText]) {
+        height =   [tableView fd_heightForCellWithIdentifier:kTextCellID  configuration:^(TextChatTableViewCell *cell) {
+            [self configCell:cell message:msg];
+            
+        }];
+    }else if ([msg.msgType isEqualToString:kMessageTypeImage]){
+        height = [tableView fd_heightForCellWithIdentifier:kImageCellID configuration:^(ImageChatTableViewCell *cell) {
+            [self configImageCell:cell message:msg];
+        }];
+    }else if ([msg.msgType isEqualToString:kMessageTypeSound]){
+        height =  [tableView fd_heightForCellWithIdentifier:kAudioCellID configuration:^(AudioTableViewCell *cell) {
+            [self configAudioCell:cell message:msg];
+        }];
+    }
+
+    
     if (height < 85) {
         height = 85;
     }
@@ -238,23 +311,86 @@ static NSString *cellID = @"ChatCellID";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    
+   
+    BmobIMMessage *msg = self.messagesArray[indexPath.row];
+    if ([msg.msgType isEqualToString:kMessageTypeText]) {
+        return [self textCellWithTableView:tableView cellForRowAtIndexPath:indexPath message:msg];
+    }else if ([msg.msgType isEqualToString:kMessageTypeImage]){
+        return [self imageCellWithTableView:tableView cellForRowAtIndexPath:indexPath message:msg];
+    }else if ([msg.msgType isEqualToString:kMessageTypeSound]){
+        return [self audioCellWithTableView:tableView cellForRowAtIndexPath:indexPath message:msg];
+    }
+
+    return nil;
+}
+
+#pragma mark - config Cells
+
+-(TextChatTableViewCell *)textCellWithTableView:(UITableView *)tableView
+                          cellForRowAtIndexPath:(NSIndexPath *)indexPath
+                                        message:(BmobIMMessage *)msg{
+    TextChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextCellID];
     if(cell == nil) {
-        cell = [[ChatTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[TextChatTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTextCellID];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    BmobIMMessage *msg = self.messagesArray[indexPath.row];
-    
+    [self configCell:cell message:msg];
+    return cell;
+
+}
+
+
+
+-(void)configCell:(TextChatTableViewCell *)cell message:(BmobIMMessage *)msg{
     if ([self.loginUser.objectId isEqualToString:msg.fromId]) {
         [cell setMsg:msg userInfo:nil] ;
     }else{
         [cell setMsg:msg userInfo:self.userInfo] ;
     }
-    
-    
-    
+}
+
+-(ImageChatTableViewCell *)imageCellWithTableView:(UITableView *)tableView
+                            cellForRowAtIndexPath:(NSIndexPath *)indexPath
+                                          message:(BmobIMMessage *)msg{
+    ImageChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kImageCellID];
+    if(cell == nil) {
+        cell = [[ImageChatTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kImageCellID];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self configImageCell:cell message:msg];
     return cell;
+    
+    
+};
+
+-(void)configImageCell:(ImageChatTableViewCell *)cell message:(BmobIMMessage *)msg{
+    if ([self.loginUser.objectId isEqualToString:msg.fromId]) {
+        [cell setMsg:msg userInfo:nil] ;
+    }else{
+        [cell setMsg:msg userInfo:self.userInfo] ;
+    }
+}
+
+-(AudioTableViewCell *)audioCellWithTableView:(UITableView *)tableView
+                            cellForRowAtIndexPath:(NSIndexPath *)indexPath
+                                          message:(BmobIMMessage *)msg{
+    AudioTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAudioCellID];
+    if(cell == nil) {
+        cell = [[AudioTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kImageCellID];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self configAudioCell:cell message:msg];
+    return cell;
+    
+    
+};
+
+-(void)configAudioCell:(AudioTableViewCell *)cell message:(BmobIMMessage *)msg{
+    if ([self.loginUser.objectId isEqualToString:msg.fromId]) {
+        [cell setMsg:msg userInfo:nil] ;
+    }else{
+        [cell setMsg:msg userInfo:self.userInfo] ;
+    }
 }
 
 #pragma mark - UITableView Delegate methods
@@ -273,7 +409,6 @@ static NSString *cellID = @"ChatCellID";
     return YES;
 
 }
-
 
 
 
@@ -311,4 +446,107 @@ static NSString *cellID = @"ChatCellID";
 }
 */
 
+
+#pragma mark - image picker
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+    UIImage *resizeImage = nil;
+    static CGFloat imageLimitWidth = 150;
+    if (image.size.width > imageLimitWidth) {
+        resizeImage = [ViewUtil resizeImageWithWidth:imageLimitWidth sourceImage:image];
+    }else{
+        resizeImage = image;
+    }
+    
+   
+    [MessageService uploadImage:resizeImage completion:^(BmobIMImageMessage *message, NSError *error) {
+        if (!error) {
+            [self.messagesArray addObject:message];
+            [self reloadLastRow];
+             __weak typeof(self)weakSelf = self;
+            [self.conversation sendMessage:message completion:^(BOOL isSuccessful, NSError *error) {
+                [weakSelf reloadLastRow];
+            }];
+        }else{
+            [self showInfomation:error.localizedDescription];
+        }
+    } progress:^(CGFloat progress) {
+        [self showProgress:progress];
+    }];
+    
+   
+    
+}
+
+-(void)reloadLastRow{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+//    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+#pragma mark - some action
+
+-(void)toPhotoLib{
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePickerController.delegate = self;
+    imagePickerController.allowsEditing = YES;
+    [imagePickerController.navigationBar setBackgroundImage:[UIImage imageNamed:@"top_bar"] forBarMetrics:UIBarMetricsCompact];
+    
+    imagePickerController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
+
+-(void)toTakePhoto{
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing = YES;
+        [imagePickerController.navigationBar setBackgroundImage:[UIImage imageNamed:@"top_bar"] forBarMetrics:UIBarMetricsCompact];
+        
+        imagePickerController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+    } else {
+        [self showInfomation:@"无可用摄像头"];
+    }
+}
+
+
+-(void)toLocate{
+
+}
+
+
+#pragma mark -
+-(void)recordCompletedWithData:(NSData *)data duration:(NSTimeInterval)duration localPath:(NSString *)localPath{
+   
+    if (duration > 1.0f && duration < 60.0f) {
+        [MessageService uploadAudio:data
+                           duration:duration
+                         completion:^(BmobIMAudioMessage *message, NSError *error) {
+                             if (!error) {
+                               
+                                 [self.messagesArray addObject:message];
+                                 [self.tableView reloadData];
+                                 __weak typeof(self)weakSelf = self;
+                                 [self.conversation sendMessage:message completion:^(BOOL isSuccessful, NSError *error) {
+                                     [weakSelf reloadLastRow];
+                                 }];
+                             }
+                         } progress:nil];
+    }
+    
+    
+
+    
+}
 @end

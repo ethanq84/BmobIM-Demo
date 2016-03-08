@@ -187,9 +187,13 @@
  *  @param block 好友
  */
 +(void)friendsWithCompletion:(BmobObjectArrayResultBlock)block{
-    BmobQuery *query = [BmobQuery queryWithClassName:kFriendTable];
+    
     
     BmobUser *user = [BmobUser getCurrentUser];
+    if (!user) {
+        return;
+    }
+    BmobQuery *query = [BmobQuery queryWithClassName:kFriendTable];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"user,friendUser"];
     NSDictionary *condiction1 = @{@"user":@{@"__type":@"Pointer",@"className":@"_User",@"objectId":user.objectId}};

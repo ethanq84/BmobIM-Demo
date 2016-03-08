@@ -84,8 +84,6 @@ static NSString *cellId = @"UserInfoCellID";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    static NSString *cellIdentifier = @"Cell";
-    
     UserInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     
     if(cell == nil) {
@@ -116,10 +114,13 @@ static NSString *cellId = @"UserInfoCellID";
             if (error) {
                 [self showInfomation:error.localizedDescription];
             }else{
-//                if (array && array.count > 0) {
+                if (array) {
                     [self.userArray setArray:array];
-                    [self.tableView reloadData];
-//                }
+                    
+                }else{
+                    [self.userArray removeAllObjects];
+                }
+                [self.tableView reloadData];
                 [self hideLoading];
             }
         } ];

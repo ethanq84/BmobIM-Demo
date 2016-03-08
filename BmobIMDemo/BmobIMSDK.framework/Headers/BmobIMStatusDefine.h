@@ -22,15 +22,19 @@ typedef NS_ENUM(int,BmobIMSendStatus){
     BmobIMSendStatus_SENT           //发送成功
 };
 
-typedef NS_ENUM(int,BmobIMMessageType) {
-    BmobIMMessageTypeText  = 1,      //文本
-    BmobIMMessageTypeImage = 2,      //图像
-    BmobIMMessageTypeSound = 4       //声音
-};
+
+
 
 typedef NS_ENUM(int,BmobIMConversationType) {
     BmobIMConversationTypeSingle = 1,    //单聊
     BmobIMConversationTypeGroup          //群聊
 };
+
+#define kMessageTypeText     @"txt"
+#define kMessageTypeImage    @"image"
+#define kMessageTypeSound    @"sound"
+#define kMessageTypeLocation @"location"
+
+
 
 #endif /* Header_h */

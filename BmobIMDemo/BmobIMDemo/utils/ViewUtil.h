@@ -19,4 +19,7 @@
 + (UIImage *)imageByScalingToSize:(CGSize)targetSize
                       sourceImage:(UIImage *)sourceImage;
 
++ (UIImage *)resizeImageWithWidth:(CGFloat)width
+                      sourceImage:(UIImage *)sourceImage;
+
 @end

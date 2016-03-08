@@ -43,11 +43,18 @@
 项目尚未完成的功能有
 
 1. 设置部分的意见反馈功能
-2. 发送图片，位置，和语音文件 
+2. 位置
 3. 附近的人
 
 ## 第三方库
-项目用到了SDWebImage框架，Masonry框架，UITableView+FDTemplateLayoutCell框架，感谢各位大牛的开源项目，让开发变得简单
+
+| 第三方库 |     说明    | 地址 |
+|---------|------------|-----|
+| SDWebImage |图片下载|https://github.com/rs/SDWebImage|
+| Masonry |界面布局|https://github.com/SnapKit/Masonry|
+| UITableView+FDTemplateLayoutCell |UITableView 自动计算cell高度|https://github.com/forkingdog/UITableView-FDTemplateLayoutCell|
+| UUChatTableView |显示录音时间|https://github.com/ZhipingYang/UUChatTableView|
+| AFNetworking |下载文件|https://github.com/ZhipingYang/UUChatTableView|https://github.com/AFNetworking/AFNetworking|
 
 ## 反馈
 开发者在使用BmobIMSDK遇到的问题可以在Bmob的客服群，问答社区进行反馈或者建议。

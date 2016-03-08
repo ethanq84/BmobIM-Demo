@@ -33,6 +33,7 @@
     }
     _bIM = [BmobIM  sharedBmobIM];
     
+    
 }
 
 

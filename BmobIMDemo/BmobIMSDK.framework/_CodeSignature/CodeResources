@@ -6,11 +6,11 @@
 	<dict>
 		<key>Headers/BmobIM.h</key>
 		<data>
-		oxm9SLNmlS8ymC+L5luJgXJ7Ixc=
+		YJ/LWsI3Hpe48Xq+jbAatDsjsY8=
 		</data>
 		<key>Headers/BmobIMAudioMessage.h</key>
 		<data>
-		EP/+zwm3kUf05hA+xUBeBny89vo=
+		nSr5Z1eSmlsmXOI9gR0aoGoFLQc=
 		</data>
 		<key>Headers/BmobIMConfig.h</key>
 		<data>
@@ -20,21 +20,29 @@
 		<data>
 		4mKX+t8VpMJxRLspMnZOEWzhTnE=
 		</data>
+		<key>Headers/BmobIMFileMessage.h</key>
+		<data>
+		mHVyBDIZQ6WrtB+ku/lt9loDuLA=
+		</data>
 		<key>Headers/BmobIMImageMessage.h</key>
 		<data>
-		vmRJxZEKc5Gy1U9SQ8+G0SLJsMg=
+		tuBJccEGIZ0TOUPsLewJA3dHG64=
+		</data>
+		<key>Headers/BmobIMLocationMessage.h</key>
+		<data>
+		4aj4CsWcYFmHL+iFTxfIuQtWZps=
 		</data>
 		<key>Headers/BmobIMMessage.h</key>
 		<data>
-		VJubjfzGNZTO7LRqMHCp9RPk3M4=
+		oX7xQNU81F3EleQ/E80BqjGNImU=
 		</data>
 		<key>Headers/BmobIMSDK.h</key>
 		<data>
-		rxdQkomHKtXb+UvzAAu4Y7dDuJQ=
+		Xu9xPOjFIfrsSALnmTmeGwvbVk0=
 		</data>
 		<key>Headers/BmobIMStatusDefine.h</key>
 		<data>
-		ydI+Ozs0IjOysOcyV5g+4ypAWn4=
+		lhR3t/wVPufrTN7pmsSxG3T/4E8=
 		</data>
 		<key>Headers/BmobIMTextMessage.h</key>
 		<data>
@@ -57,11 +65,11 @@
 	<dict>
 		<key>Headers/BmobIM.h</key>
 		<data>
-		oxm9SLNmlS8ymC+L5luJgXJ7Ixc=
+		YJ/LWsI3Hpe48Xq+jbAatDsjsY8=
 		</data>
 		<key>Headers/BmobIMAudioMessage.h</key>
 		<data>
-		EP/+zwm3kUf05hA+xUBeBny89vo=
+		nSr5Z1eSmlsmXOI9gR0aoGoFLQc=
 		</data>
 		<key>Headers/BmobIMConfig.h</key>
 		<data>
@@ -71,21 +79,29 @@
 		<data>
 		4mKX+t8VpMJxRLspMnZOEWzhTnE=
 		</data>
+		<key>Headers/BmobIMFileMessage.h</key>
+		<data>
+		mHVyBDIZQ6WrtB+ku/lt9loDuLA=
+		</data>
 		<key>Headers/BmobIMImageMessage.h</key>
 		<data>
-		vmRJxZEKc5Gy1U9SQ8+G0SLJsMg=
+		tuBJccEGIZ0TOUPsLewJA3dHG64=
+		</data>
+		<key>Headers/BmobIMLocationMessage.h</key>
+		<data>
+		4aj4CsWcYFmHL+iFTxfIuQtWZps=
 		</data>
 		<key>Headers/BmobIMMessage.h</key>
 		<data>
-		VJubjfzGNZTO7LRqMHCp9RPk3M4=
+		oX7xQNU81F3EleQ/E80BqjGNImU=
 		</data>
 		<key>Headers/BmobIMSDK.h</key>
 		<data>
-		rxdQkomHKtXb+UvzAAu4Y7dDuJQ=
+		Xu9xPOjFIfrsSALnmTmeGwvbVk0=
 		</data>
 		<key>Headers/BmobIMStatusDefine.h</key>
 		<data>
-		ydI+Ozs0IjOysOcyV5g+4ypAWn4=
+		lhR3t/wVPufrTN7pmsSxG3T/4E8=
 		</data>
 		<key>Headers/BmobIMTextMessage.h</key>
 		<data>

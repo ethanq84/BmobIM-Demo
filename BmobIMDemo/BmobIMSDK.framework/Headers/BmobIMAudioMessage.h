@@ -6,9 +6,12 @@
 //  Copyright © 2016年 bmob. All rights reserved.
 //
 
-#import <BmobIMSDK/BmobIMSDK.h>
+#import "BmobIMFileMessage.h"
 
-@interface BmobIMAudioMessage : BmobIMMessage
+@interface BmobIMAudioMessage : BmobIMFileMessage
+
+
+@property (readonly, nonatomic) NSTimeInterval duration;
 
 /**
  *  创建音频消息

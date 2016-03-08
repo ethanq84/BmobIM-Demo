@@ -9,32 +9,82 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "BmobIMConfig.h"
+#import "BmobIMStatusDefine.h"
 
 
 
+@interface BmobIMMessage : NSObject <NSCopying>
 
-@interface BmobIMMessage : NSObject
+/**
+ *  是否保存在本地时定义的key
+ */
+extern NSString* const KEY_SAVEDMESSAGE;
 
+/**
+ *  文件类型的信息放在这里，图片@{KEY_METADATA:@{KEY_HEIGHT:@(h),KEY_WIDTH:@(w)}} 声音@{KEY_METADATA:@{KEY_DURATION:@(t)}}
+ */
+extern NSString* const KEY_METADATA ;
+
+/**
+ *  时长
+ */
+extern NSString* const KEY_DURATION ;
+
+extern NSString* const KEY_LATITUDE ;
+
+extern NSString* const KEY_LONGITUDE;
+
+/**
+ *  宽度
+ */
+extern NSString* const KEY_WIDTH    ;
+
+/**
+ *  高度
+ */
+extern NSString* const KEY_HEIGHT   ;
 /**
  *  消息来源者
  */
-@property (copy, nonatomic  ) NSString                    *fromId;
+@property (copy, nonatomic  ) NSString        *fromId;
 
 /**
  *  消息接收者
  */
-@property (copy, nonatomic  ) NSString                    *toId;
+@property (copy, nonatomic  ) NSString        *toId;
 
 /**
  *  消息内容
  */
-@property (copy, nonatomic  ) NSString                    *content;
+@property (copy, nonatomic  ) NSString        *content;
 
 
 /**
  *  消息类型
  */
-@property (assign, nonatomic) BmobIMMessageType           msgType;
+@property (copy, nonatomic  ) NSString        *msgType;
+
+/**
+ *   精确到毫秒
+ */
+@property (assign, nonatomic) uint64_t        createdTime;
+
+
+/**
+ *   精确到毫秒
+ */
+@property (assign, nonatomic) uint64_t        updatedTime;
+
+
+/**
+ *  会话Id
+ */
+@property (strong, nonatomic) NSString        *conversationId;
+
+/**
+ *  传递额外的信息,如果不需要保存消息到本地，请在额外信息传入@{KEY_SAVEDMESSAGE:@(NO)....}
+ */
+@property (strong, nonatomic) NSDictionary    *extra;
 
 /**
  *  是否已读
@@ -51,37 +101,5 @@
  */
 @property (assign, nonatomic) BmobIMConversationType      conversationType;
 
-
-/**
- *   精确到毫秒
- */
-@property (assign, nonatomic) uint64_t                        createdTime;
-
-
-/**
- *   精确到毫秒
- */
-@property (assign, nonatomic) uint64_t                        updatedTime;
-
-
-/**
- *  会话Id
- */
-@property (strong, nonatomic) NSString                    *conversationId;
-
-/**
- *  传递额外的信息
- */
-@property (strong, nonatomic) NSDictionary                *extra;
-
-/**
- *  将接收到的json转成message
- *
- *  @param dic      接收到的json格式信息
- *  @param belongId 当前用户的id
- *
- *  @return BmobIMMessage实例
- */
-+(instancetype)messageFromReceivedDictionary:(NSDictionary *)dic userId:(NSString *)belongId;
 
 @end

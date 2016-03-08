@@ -72,15 +72,17 @@
     }
     
     [self showLoading];
-    [BmobUser loginWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(BmobUser *user, NSError *error) {
-        if (user) {
-            [self hideLoading];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"Login" object:user.objectId];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }else{
-            [self showInfomation:error.description];
-        }
-    }];
+    [BmobUser loginWithUsernameInBackground:self.usernameTextField.text
+                                   password:self.passwordTextField.text
+                                      block:^(BmobUser *user, NSError *error) {
+                                          if (user) {
+                                              [self hideLoading];
+                                              [[NSNotificationCenter defaultCenter] postNotificationName:@"Login" object:user.objectId];
+                                              [self dismissViewControllerAnimated:YES completion:nil];
+                                          }else{
+                                              [self showInfomation:error.description];
+                                          }
+                                      }];
 }
 
 /*

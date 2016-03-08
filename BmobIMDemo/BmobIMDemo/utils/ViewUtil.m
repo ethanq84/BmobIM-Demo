@@ -66,4 +66,23 @@
     return newImage ;
 }
 
++ (UIImage *)resizeImageWithWidth:(CGFloat)width
+                      sourceImage:(UIImage *)sourceImage{
+    CGFloat resizeH = 0.0f;
+    CGFloat resizeW = 0.0f;
+    CGFloat oldH    = sourceImage.size.height;
+    CGFloat oldW    = sourceImage.size.width;
+    CGFloat centerX = 0.0f;
+    CGFloat centerY = 0.0f;
+    
+    resizeW = width;
+    resizeH = oldH * resizeW/oldW;
+    
+    UIGraphicsBeginImageContext(CGSizeMake((int) resizeW, (int)resizeH));
+    [sourceImage drawInRect:CGRectMake(centerX, centerY,(int) resizeW, (int)resizeH)];
+    UIImage *reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return reSizeImage;
+}
+
 @end

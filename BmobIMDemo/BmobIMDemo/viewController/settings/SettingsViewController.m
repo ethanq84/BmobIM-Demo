@@ -152,7 +152,7 @@
     switch (type) {
         case SettingTypeNick:{
             cell.titleLabel.text = @"昵称";
-            cell.contentLabel.text = [self.user objectForKey:@"nick"]?:nil;
+            cell.contentLabel.text = [self.user objectForKey:@"nick"]?:self.user.username;
         }
             break;
         case SettingTypeGender:{
@@ -277,29 +277,11 @@
     if (actionSheet.tag == 1000) {
         switch (buttonIndex) {
             case 0:{
-                UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-                imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-                imagePickerController.delegate = self;
-                imagePickerController.allowsEditing = YES;
-                [imagePickerController.navigationBar setBackgroundImage:[UIImage imageNamed:@"top_bar"] forBarMetrics:UIBarMetricsCompact];
-//                [imagePickerController.navigationBar setTintColor:[UIColor whiteColor]];
-                imagePickerController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-                [self presentViewController:imagePickerController animated:YES completion:nil];
+                [self toPhotoLib];
             }
                 break;
             case 1:{
-                UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-                if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-                    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-                    imagePickerController.delegate = self;
-                    imagePickerController.allowsEditing = YES;
-                    [imagePickerController.navigationBar setBackgroundImage:[UIImage imageNamed:@"top_bar"] forBarMetrics:UIBarMetricsCompact];
-//                    [imagePickerController.navigationBar setBarTintColor:[UIColor whiteColor]];
-                    imagePickerController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-                    [self presentViewController:imagePickerController animated:YES completion:nil];
-                } else {
-                    [self showInfomation:@"无可用摄像头"];
-                }
+                [self toTakePhoto];
             }
                 break;
             default:
@@ -352,5 +334,31 @@
     }
 }
 
+
+-(void)toPhotoLib{
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePickerController.delegate = self;
+    imagePickerController.allowsEditing = YES;
+    [imagePickerController.navigationBar setBackgroundImage:[UIImage imageNamed:@"top_bar"] forBarMetrics:UIBarMetricsCompact];
+    
+    imagePickerController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
+
+-(void)toTakePhoto{
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing = YES;
+        [imagePickerController.navigationBar setBackgroundImage:[UIImage imageNamed:@"top_bar"] forBarMetrics:UIBarMetricsCompact];
+        
+        imagePickerController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+    } else {
+        [self showInfomation:@"无可用摄像头"];
+    }
+}
 
 @end

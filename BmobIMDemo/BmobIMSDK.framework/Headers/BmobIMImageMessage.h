@@ -6,10 +6,19 @@
 //  Copyright © 2016年 bmob. All rights reserved.
 //
 
-#import <BmobIMSDK/BmobIMSDK.h>
+#import "BmobIMFileMessage.h"
 
-@interface BmobIMImageMessage : BmobIMMessage
+@interface BmobIMImageMessage : BmobIMFileMessage
 
+/**
+ *  宽度
+ */
+@property (readonly, nonatomic) CGFloat width;
+
+/**
+ *  高度
+ */
+@property (readonly, nonatomic) CGFloat height;
 
 /**
  *  创建图片消息

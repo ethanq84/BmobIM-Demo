@@ -48,7 +48,14 @@
  *  断开连接
  */
 -(void)disconnect;
- 
+
+/**
+ *  是否连接中
+ *
+ *  @return 是否连接中
+ */
+-(BOOL)isConnected;
+
 
 /**
  *  查询本地存储的会话列表

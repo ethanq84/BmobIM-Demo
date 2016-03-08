@@ -23,11 +23,13 @@
 #import <BmobIMSDK/BmobIM.h>
 #import <BmobIMSDK/BmobIMStatusDefine.h>
 #import <BmobIMSDK/BmobIMMessage.h>
+#import <BmobIMSDK/BmobIMFileMessage.h>
 #import <BmobIMSDK/BmobIMTextMessage.h>
 #import <BmobIMSDK/BmobIMImageMessage.h>
 #import <BmobIMSDK/BmobIMAudioMessage.h>
+#import <BmobIMSDK/BmobIMLocationMessage.h>
 
 UIKIT_STATIC_INLINE NSString* BmobIMVersion()
 {
-    return @"2.0.0";
+    return @"2.0.1";
 }

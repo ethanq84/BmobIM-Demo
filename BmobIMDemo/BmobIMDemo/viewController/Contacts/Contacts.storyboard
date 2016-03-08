@@ -226,14 +226,14 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCellID" rowHeight="74" id="dIq-eO-eEe" customClass="ChatTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCellID" rowHeight="74" id="dIq-eO-eEe" customClass="TextChatTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="320" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dIq-eO-eEe" id="CxA-bY-zgI">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAI-8F-fkZ" customClass="ChatView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAI-8F-fkZ" customClass="TextChatView">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                                                     <color key="backgroundColor" red="0.94509803921568625" green="0.94901960784313721" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -247,6 +247,52 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="chatView" destination="rAI-8F-fkZ" id="kSd-kO-dNo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageChatCellID" rowHeight="113" id="mOB-4U-3Vi" customClass="ImageChatTableViewCell">
+                                        <rect key="frame" x="0.0" y="102" width="320" height="113"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mOB-4U-3Vi" id="FEr-0Q-I5u">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="113"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MTK-0N-PUQ" customClass="ImageChatView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="113"/>
+                                                    <color key="backgroundColor" red="0.94509803920000002" green="0.94901960780000005" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MTK-0N-PUQ" firstAttribute="leading" secondItem="FEr-0Q-I5u" secondAttribute="leading" id="A8n-00-34j"/>
+                                                <constraint firstItem="MTK-0N-PUQ" firstAttribute="top" secondItem="FEr-0Q-I5u" secondAttribute="top" id="PtH-AG-EPd"/>
+                                                <constraint firstAttribute="bottom" secondItem="MTK-0N-PUQ" secondAttribute="bottom" id="WlS-2g-CTU"/>
+                                                <constraint firstAttribute="trailing" secondItem="MTK-0N-PUQ" secondAttribute="trailing" id="aoZ-mP-Cr6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chatView" destination="MTK-0N-PUQ" id="saj-Yo-vgb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="audioCellID" rowHeight="101" id="zdo-VM-laO" customClass="AudioTableViewCell">
+                                        <rect key="frame" x="0.0" y="215" width="320" height="101"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zdo-VM-laO" id="nDO-5l-NlC">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vo5-gq-zS9" customClass="AudioChatView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
+                                                    <color key="backgroundColor" red="0.94509803920000002" green="0.94901960780000005" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Vo5-gq-zS9" secondAttribute="trailing" id="AOL-c2-3tr"/>
+                                                <constraint firstAttribute="bottom" secondItem="Vo5-gq-zS9" secondAttribute="bottom" id="GaZ-Gn-0q4"/>
+                                                <constraint firstItem="Vo5-gq-zS9" firstAttribute="leading" secondItem="nDO-5l-NlC" secondAttribute="leading" id="NMu-m8-C6Z"/>
+                                                <constraint firstItem="Vo5-gq-zS9" firstAttribute="top" secondItem="nDO-5l-NlC" secondAttribute="top" id="xf8-Fq-xjI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chatView" destination="Vo5-gq-zS9" id="maO-IH-70z"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -387,7 +433,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aTF-BI-z4l">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserInfoCellID1" id="aTF-BI-z4l">
                                         <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aTF-BI-z4l" id="1Q0-GA-Guo">
