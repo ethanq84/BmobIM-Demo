@@ -32,6 +32,9 @@
 		BE675B0B1C4639A000BB2546 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE675B0A1C4639A000BB2546 /* CoreFoundation.framework */; };
 		BE675B1A1C463E4B00BB2546 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE675B191C463E4B00BB2546 /* SystemConfiguration.framework */; };
 		BE72F2EC1C5AFB76006DDFED /* RecentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72F2EB1C5AFB76006DDFED /* RecentTableViewCell.m */; };
+		BE8026411C8FBC69005B5F58 /* LocationChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8026401C8FBC69005B5F58 /* LocationChatView.m */; };
+		BE8026441C8FC325005B5F58 /* LocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8026431C8FC325005B5F58 /* LocationTableViewCell.m */; };
+		BE8026461C8FDC9F005B5F58 /* BmobIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8026451C8FDC9F005B5F58 /* BmobIMSDK.framework */; };
 		BE8D8D871C5082D4007E0B03 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8D8D861C5082D4007E0B03 /* ChatViewController.m */; };
 		BE8D8D921C50DA7F007E0B03 /* ChatBottomControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8D8D911C50DA7F007E0B03 /* ChatBottomControlView.m */; };
 		BE8D8D941C50DA9E007E0B03 /* ChatBottomControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE8D8D931C50DA9E007E0B03 /* ChatBottomControlView.xib */; };
@@ -64,7 +67,6 @@
 		BEBB254B1C83DF3400D0DF61 /* ChatBottomContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB254A1C83DF3400D0DF61 /* ChatBottomContentView.m */; };
 		BEBB254D1C83DF5400D0DF61 /* ChatBottomContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBB254C1C83DF5400D0DF61 /* ChatBottomContentView.xib */; };
 		BEC227071C8E6C75009AF8C5 /* BmobIMMessage+SubClass.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC227061C8E6C75009AF8C5 /* BmobIMMessage+SubClass.m */; };
-		BEC227121C8E7FDE009AF8C5 /* BmobIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC227111C8E7FDE009AF8C5 /* BmobIMSDK.framework */; };
 		BEC6A9AF1C898979007A1268 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC6A9AE1C898979007A1268 /* CommonUtil.m */; };
 		BED106ED1C8D1384009CAE61 /* AudioChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = BED106EC1C8D1384009CAE61 /* AudioChatView.m */; };
 		BED106F01C8D1600009CAE61 /* AudioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED106EF1C8D1600009CAE61 /* AudioTableViewCell.m */; };
@@ -142,6 +144,11 @@
 		BE675B191C463E4B00BB2546 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BE72F2EA1C5AFB76006DDFED /* RecentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentTableViewCell.h; sourceTree = "<group>"; };
 		BE72F2EB1C5AFB76006DDFED /* RecentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentTableViewCell.m; sourceTree = "<group>"; };
+		BE80263F1C8FBC69005B5F58 /* LocationChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationChatView.h; sourceTree = "<group>"; };
+		BE8026401C8FBC69005B5F58 /* LocationChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationChatView.m; sourceTree = "<group>"; };
+		BE8026421C8FC325005B5F58 /* LocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTableViewCell.h; sourceTree = "<group>"; };
+		BE8026431C8FC325005B5F58 /* LocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableViewCell.m; sourceTree = "<group>"; };
+		BE8026451C8FDC9F005B5F58 /* BmobIMSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobIMSDK.framework; sourceTree = "<group>"; };
 		BE8D8D851C5082D4007E0B03 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		BE8D8D861C5082D4007E0B03 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		BE8D8D901C50DA7F007E0B03 /* ChatBottomControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBottomControlView.h; sourceTree = "<group>"; };
@@ -196,7 +203,6 @@
 		BEBB254C1C83DF5400D0DF61 /* ChatBottomContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatBottomContentView.xib; sourceTree = "<group>"; };
 		BEC227051C8E6C75009AF8C5 /* BmobIMMessage+SubClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BmobIMMessage+SubClass.h"; sourceTree = "<group>"; };
 		BEC227061C8E6C75009AF8C5 /* BmobIMMessage+SubClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BmobIMMessage+SubClass.m"; sourceTree = "<group>"; };
-		BEC227111C8E7FDE009AF8C5 /* BmobIMSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobIMSDK.framework; sourceTree = "<group>"; };
 		BEC6A9AD1C898979007A1268 /* CommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
 		BEC6A9AE1C898979007A1268 /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
 		BED106EB1C8D1384009CAE61 /* AudioChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioChatView.h; sourceTree = "<group>"; };
@@ -235,7 +241,7 @@
 				BE675B1A1C463E4B00BB2546 /* SystemConfiguration.framework in Frameworks */,
 				BE675B0B1C4639A000BB2546 /* CoreFoundation.framework in Frameworks */,
 				BE675B091C46398200BB2546 /* Foundation.framework in Frameworks */,
-				BEC227121C8E7FDE009AF8C5 /* BmobIMSDK.framework in Frameworks */,
+				BE8026461C8FDC9F005B5F58 /* BmobIMSDK.framework in Frameworks */,
 				BE675B071C46397800BB2546 /* UIKit.framework in Frameworks */,
 				BE675B051C46394B00BB2546 /* CFNetwork.framework in Frameworks */,
 				BE675B031C46394200BB2546 /* CoreGraphics.framework in Frameworks */,
@@ -385,7 +391,7 @@
 		BE675B0E1C463A3300BB2546 /* framework */ = {
 			isa = PBXGroup;
 			children = (
-				BEC227111C8E7FDE009AF8C5 /* BmobIMSDK.framework */,
+				BE8026451C8FDC9F005B5F58 /* BmobIMSDK.framework */,
 				BE675B0A1C4639A000BB2546 /* CoreFoundation.framework */,
 				BE675B081C46398200BB2546 /* Foundation.framework */,
 				BE675B061C46397800BB2546 /* UIKit.framework */,
@@ -585,6 +591,10 @@
 				BED106EC1C8D1384009CAE61 /* AudioChatView.m */,
 				BED106EE1C8D1600009CAE61 /* AudioTableViewCell.h */,
 				BED106EF1C8D1600009CAE61 /* AudioTableViewCell.m */,
+				BE80263F1C8FBC69005B5F58 /* LocationChatView.h */,
+				BE8026401C8FBC69005B5F58 /* LocationChatView.m */,
+				BE8026421C8FC325005B5F58 /* LocationTableViewCell.h */,
+				BE8026431C8FC325005B5F58 /* LocationTableViewCell.m */,
 			);
 			name = contact;
 			sourceTree = "<group>";
@@ -801,6 +811,7 @@
 				BEB798BF1C4DE93F005C0C5A /* ContactsViewController.m in Sources */,
 				BE72F2EC1C5AFB76006DDFED /* RecentTableViewCell.m in Sources */,
 				BEDEF1371C4F868B002EC04B /* MessageService.m in Sources */,
+				BE8026411C8FBC69005B5F58 /* LocationChatView.m in Sources */,
 				BEB798AD1C4DE8E7005C0C5A /* RegisterViewController.m in Sources */,
 				BE675AD71C46391A00BB2546 /* ViewController.m in Sources */,
 				BEED1DCE1C520EC90000512A /* TextChatTableViewCell.m in Sources */,
@@ -817,6 +828,7 @@
 				BEB798C81C4DE9B3005C0C5A /* MainTabBar.m in Sources */,
 				BEB798E91C4E2F49005C0C5A /* UIColor+SubClass.m in Sources */,
 				BEB798D31C4DEC50005C0C5A /* RootTabBarController.m in Sources */,
+				BE8026441C8FC325005B5F58 /* LocationTableViewCell.m in Sources */,
 				BEB798CD1C4DEB39005C0C5A /* MBProgressHUD.m in Sources */,
 				BEB798AC1C4DE8E7005C0C5A /* LoginViewController.m in Sources */,
 				BEB798E11C4E24E1005C0C5A /* UserInfoTableViewCell.m in Sources */,
@@ -993,7 +1005,6 @@
 					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 					"\"${PODS_ROOT}/Headers/Public/UITableView+FDTemplateLayoutCell\"",
-					"\"$(SRCROOT)/Pods\"",
 				);
 				INFOPLIST_FILE = BmobIMDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1005,6 +1016,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cn.bmob.BmobIMDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods\"/**";
 			};
 			name = Debug;
 		};
@@ -1028,7 +1040,6 @@
 					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 					"\"${PODS_ROOT}/Headers/Public/UITableView+FDTemplateLayoutCell\"",
-					"\"$(SRCROOT)/Pods\"",
 				);
 				INFOPLIST_FILE = BmobIMDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1040,6 +1051,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cn.bmob.BmobIMDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods\"/**";
 			};
 			name = Release;
 		};

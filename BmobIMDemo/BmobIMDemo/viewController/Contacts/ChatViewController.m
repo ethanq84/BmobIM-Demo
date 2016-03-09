@@ -21,7 +21,7 @@
 #import "MessageService.h"
 #import "AudioTableViewCell.h"
 #import "BmobIMMessage+SubClass.h"
-
+#import "LocationTableViewCell.h"
 
 @interface ChatViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ChatBottomContolViewDelegate>
 
@@ -42,9 +42,11 @@
 
 @implementation ChatViewController
 
-static NSString *kTextCellID = @"ChatCellID";
-static NSString *kImageCellID = @"imageChatCellID";
-static NSString *kAudioCellID = @"audioCellID";
+static NSString *kTextCellID     = @"ChatCellID";
+static NSString *kImageCellID    = @"imageChatCellID";
+static NSString *kAudioCellID    = @"audioCellID";
+static NSString *kLocationCellID = @"locationCellID";
+
 static CGFloat  kBottomContentViewHeight = 105.0f;
 
 - (void)viewDidLoad {
@@ -101,6 +103,7 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
     [self.contentView setupSubviews];
     [self.contentView.photoLibButton addTarget:self action:@selector(toPhotoLib) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView.photoTakeButton addTarget:self action:@selector(toTakePhoto) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView.locateButton addTarget:self action:@selector(toLocate) forControlEvents:UIControlEventTouchUpInside];
 }
 
 
@@ -292,6 +295,10 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
         height =  [tableView fd_heightForCellWithIdentifier:kAudioCellID configuration:^(AudioTableViewCell *cell) {
             [self configAudioCell:cell message:msg];
         }];
+    }else if ([msg.msgType isEqualToString:kMessageTypeLocation]){
+        height = [tableView fd_heightForCellWithIdentifier:kLocationCellID configuration:^(LocationTableViewCell *cell) {
+            [self configLocationCell:cell message:msg];
+        }];
     }
 
     
@@ -319,6 +326,8 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
         return [self imageCellWithTableView:tableView cellForRowAtIndexPath:indexPath message:msg];
     }else if ([msg.msgType isEqualToString:kMessageTypeSound]){
         return [self audioCellWithTableView:tableView cellForRowAtIndexPath:indexPath message:msg];
+    }else if ([msg.msgType isEqualToString:kMessageTypeLocation]){
+        return [self locationCellWithTableView:tableView cellForRowAtIndexPath:indexPath message:msg];
     }
 
     return nil;
@@ -376,7 +385,7 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
                                           message:(BmobIMMessage *)msg{
     AudioTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAudioCellID];
     if(cell == nil) {
-        cell = [[AudioTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kImageCellID];
+        cell = [[AudioTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kAudioCellID];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [self configAudioCell:cell message:msg];
@@ -386,6 +395,29 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
 };
 
 -(void)configAudioCell:(AudioTableViewCell *)cell message:(BmobIMMessage *)msg{
+    if ([self.loginUser.objectId isEqualToString:msg.fromId]) {
+        [cell setMsg:msg userInfo:nil] ;
+    }else{
+        [cell setMsg:msg userInfo:self.userInfo] ;
+    }
+}
+
+
+-(LocationTableViewCell *)locationCellWithTableView:(UITableView *)tableView
+                              cellForRowAtIndexPath:(NSIndexPath *)indexPath
+                                            message:(BmobIMMessage *)msg{
+    LocationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kLocationCellID];
+    if(cell == nil) {
+        cell = [[LocationTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kLocationCellID];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self configLocationCell:cell message:msg];
+    return cell;
+    
+    
+};
+
+-(void)configLocationCell:(LocationTableViewCell *)cell message:(BmobIMMessage *)msg{
     if ([self.loginUser.objectId isEqualToString:msg.fromId]) {
         [cell setMsg:msg userInfo:nil] ;
     }else{
@@ -470,8 +502,9 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
     [MessageService uploadImage:resizeImage completion:^(BmobIMImageMessage *message, NSError *error) {
         if (!error) {
             [self.messagesArray addObject:message];
-            [self reloadLastRow];
+            [self scrollToBottom];
              __weak typeof(self)weakSelf = self;
+            
             [self.conversation sendMessage:message completion:^(BOOL isSuccessful, NSError *error) {
                 [weakSelf reloadLastRow];
             }];
@@ -489,7 +522,16 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
 -(void)reloadLastRow{
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
-//    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//
+}
+
+-(void)scrollToBottom{
+   
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0];
+     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    
+    
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 #pragma mark - some action
@@ -522,7 +564,19 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
 
 
 -(void)toLocate{
-
+    BmobIMLocationMessage *message = [BmobIMLocationMessage messageWithAddress:@"广州大学城" attributes:@{KEY_METADATA:@{KEY_LATITUDE:@(23.039),KEY_LONGITUDE:@(113.388)}}];
+    message.conversationType =  BmobIMConversationTypeSingle;
+    message.createdTime = (uint64_t)([[NSDate date] timeIntervalSince1970] * 1000);
+    message.updatedTime = message.createdTime;
+    [self.messagesArray addObject:message];
+    [self scrollToBottom];
+    
+    __weak typeof(self)weakSelf = self;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [self.conversation sendMessage:message completion:^(BOOL isSuccessful, NSError *error) {
+        [weakSelf reloadLastRow];
+    }];
 }
 
 
@@ -536,8 +590,10 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
                              if (!error) {
                                
                                  [self.messagesArray addObject:message];
-                                 [self.tableView reloadData];
+                                 [self scrollToBottom];
                                  __weak typeof(self)weakSelf = self;
+                                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0];
+                                 [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
                                  [self.conversation sendMessage:message completion:^(BOOL isSuccessful, NSError *error) {
                                      [weakSelf reloadLastRow];
                                  }];

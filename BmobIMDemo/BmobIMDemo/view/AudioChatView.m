@@ -64,11 +64,7 @@
 
 -(void)setMessage:(BmobIMMessage *)msg user:(BmobIMUserInfo *)userInfo{
     [super setMessage:msg user:userInfo];
-    if ([self.msg.fromId isEqualToString:[BmobUser getCurrentUser].objectId]) {
-        [self layoutViewsSelf];
-    }else{
-        [self layoutViewsOther];
-    }
+    
     [self.chatBackgroundImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.chatContentView).insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];

@@ -40,14 +40,14 @@
 
 -(UILabel *)timeLabel{
     if (!_timeLabel) {
-        _timeLabel = [[UILabel alloc] init];
-        _timeLabel.font = [ UIFont systemFontOfSize:12];
+        _timeLabel                 = [[UILabel alloc] init];
+        _timeLabel.font            = [ UIFont systemFontOfSize:12];
         [_timeLabel.layer setCornerRadius:3];
         [_timeLabel.layer setMasksToBounds:YES];
         _timeLabel.backgroundColor = [UIColor colorWithR:227 g:228 b:232];
         [self addSubview:_timeLabel];
-        _timeLabel.textColor = [UIColor colorWithR:136 g:136 b:136];
-        _timeLabel.textAlignment = NSTextAlignmentCenter;
+        _timeLabel.textColor       = [UIColor colorWithR:136 g:136 b:136];
+        _timeLabel.textAlignment   = NSTextAlignmentCenter;
         [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.mas_centerX);
             make.width.equalTo(@140);
