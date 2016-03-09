@@ -33,12 +33,11 @@ typedef void(^uploadBlock)(id resule ,NSError *error);
  *  @param block         上传的结果
  *  @param progressBlock 上传进度
  *
- *  @return <#return value description#>
+ *  @return 
  */
 +(void)uploadImage:(UIImage *)image
         completion:(uploadBlock)block
-          progress:(BmobProgressBlock)progressBlock
-          ;
+          progress:(BmobProgressBlock)progressBlock;
 
 /**
  *  发送语音

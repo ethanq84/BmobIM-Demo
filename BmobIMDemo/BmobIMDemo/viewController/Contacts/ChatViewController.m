@@ -219,8 +219,7 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
         
         
         [self.messagesArray addObject:tmpMessage];
-        [self.tableView reloadData];
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        [self scrollToBottom];
     }
     
 }
@@ -456,9 +455,9 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
         message.createdTime = (uint64_t)([[NSDate date] timeIntervalSince1970] * 1000);
         message.updatedTime = message.createdTime;
         [self.messagesArray addObject:message];
-        [self.tableView reloadData];
+        [self scrollToBottom];
         self.bottomView.textField.text = nil;
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        
         __weak typeof(self)weakSelf = self;
         [self.conversation sendMessage:message completion:^(BOOL isSuccessful, NSError *error) {
             [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
@@ -572,8 +571,7 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
     [self scrollToBottom];
     
     __weak typeof(self)weakSelf = self;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0];
-    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+   
     [self.conversation sendMessage:message completion:^(BOOL isSuccessful, NSError *error) {
         [weakSelf reloadLastRow];
     }];
@@ -592,8 +590,7 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
                                  [self.messagesArray addObject:message];
                                  [self scrollToBottom];
                                  __weak typeof(self)weakSelf = self;
-                                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0];
-                                 [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                                 
                                  [self.conversation sendMessage:message completion:^(BOOL isSuccessful, NSError *error) {
                                      [weakSelf reloadLastRow];
                                  }];
