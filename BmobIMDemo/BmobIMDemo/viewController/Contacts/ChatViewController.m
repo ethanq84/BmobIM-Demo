@@ -203,6 +203,9 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
 
 -(void)receiveMessage:(NSNotification *)noti{
     BmobIMMessage *message = noti.object;
+    
+    NSLog(@"%@",message.extra);
+    
     if (message.extra[KEY_SAVEDMESSAGE] && ![message.extra[KEY_SAVEDMESSAGE] boolValue]) {
         return;
     }
@@ -575,8 +578,21 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
     [self.conversation sendMessage:message completion:^(BOOL isSuccessful, NSError *error) {
         [weakSelf reloadLastRow];
     }];
+    
+//    [self sendTempMessage];
 }
 
+-(void)sendTempMessage{
+    BmobIMMessage *message = [[BmobIMMessage alloc] init];
+
+    message.msgType = @"notice";
+    message.conversationType = BmobIMConversationTypeSingle;
+    message.extra = @{KEY_SAVEDMESSAGE:@(NO)};
+    message.content = @"添加好友";
+    [self.conversation sendMessage:message completion:^(BOOL isSuccessful, NSError *error) {
+        NSLog(@"error %@",error.localizedDescription);
+    }];
+}
 
 #pragma mark -
 -(void)recordCompletedWithData:(NSData *)data duration:(NSTimeInterval)duration localPath:(NSString *)localPath{

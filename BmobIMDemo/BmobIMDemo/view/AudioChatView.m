@@ -144,6 +144,11 @@
 
 
 -(void)playAudio{
+    
+    if ([[RecordAudio defaultRecordAudio] isPlaying]) {
+        return;
+    }
+    
     self.audioButton.enabled = NO;
     //得到地址
     BmobIMAudioMessage *audioMessage = (BmobIMAudioMessage *)self.msg;
@@ -203,5 +208,8 @@
     [[RecordAudio defaultRecordAudio] stopPlay];
     self.audioButton.enabled = YES;
 }
+
+
+
 
 @end

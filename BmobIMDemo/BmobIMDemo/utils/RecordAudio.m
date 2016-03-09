@@ -26,6 +26,8 @@
 
 @property (copy,   nonatomic) NSString        *fileName;
 
+
+
 @end
 
 @implementation RecordAudio
@@ -44,6 +46,7 @@
     self = [super init];
     if (self) {
         [self setupAudioSession];
+        
     }
     
     return self;
@@ -120,6 +123,9 @@
     return amrData;
 }
 
+-(BOOL)isPlaying{
+   return  [self.player isPlaying];
+}
 
 -(void)play:(NSData *)data type:(NSString *)type{
     AVAudioSession * audioSession = [AVAudioSession sharedInstance];
@@ -143,6 +149,7 @@
                 _player = [[AVAudioPlayer alloc] initWithData:outData error:nil];
             }
         }
+        
         self.player.delegate = self;
         [self.player prepareToPlay];
         [self.player play];
@@ -165,6 +172,7 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(playDidFinish)]) {
         [self.delegate playDidFinish];
     }
+    
 }
 
 - (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error{

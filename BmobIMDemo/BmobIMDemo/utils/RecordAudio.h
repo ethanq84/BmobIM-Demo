@@ -19,6 +19,8 @@
 
 @property (assign, nonatomic) CGFloat recordedDuration;
 
+
+
 +(instancetype)defaultRecordAudio;
 
 -(void) startRecord;
@@ -27,6 +29,7 @@
 
 -(NSData *)audioData;
 
+-(BOOL)isPlaying;
 
 -(void)play:(NSData *)data type:(NSString *)type;
 
