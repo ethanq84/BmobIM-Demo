@@ -41,17 +41,7 @@
     
     BmobIMImageMessage *imgMsg = (BmobIMImageMessage *)self.msg;
     
-    [self.imageButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.chatBackgroundImageView );
-        make.left.equalTo(self.chatBackgroundImageView.mas_left ).with.offset(6);
-        if (imgMsg.width > 150) {
-            make.width.equalTo(@(150));
-            make.height.equalTo(@(150* imgMsg.height/imgMsg.width ));
-        }else{
-            make.width.equalTo(@(imgMsg.width));
-            make.height.equalTo(@(imgMsg.height));
-        }
-    }];
+    
     
     [self.chatContentView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.avatarBackgroundImageView.mas_left).with.offset(-8);
@@ -63,22 +53,40 @@
     [self.chatBackgroundImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.chatContentView).insets(UIEdgeInsetsMake(0, 0, 10, 0));
     }];
-   
-    [self.imageButton sd_setBackgroundImageWithURL:[NSURL URLWithString:[[self.msg.content componentsSeparatedByString:@"&"] lastObject]]  forState:UIControlStateNormal placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    
+     CGSize imageSize ;
+    if ([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.msg.content]) {
+        UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.msg.content];
+        
         if (imgMsg.width == 0.0f || imgMsg.height == 0.0f) {
-            [self.imageButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(self.chatBackgroundImageView );
-                make.right.equalTo(self.chatBackgroundImageView.mas_right ).with.offset(-6);
-                if (image.size.width > 150) {
-                    make.width.equalTo(@(150));
-                    make.height.equalTo(@(150* image.size.height/image.size.width));
-                }else{
-                    make.width.equalTo(@(image.size.width));
-                    make.height.equalTo(@(image.size.height));
-                }
-                
-            }];
+            imageSize = image.size;
+        }else{
+            imageSize = CGSizeMake(imgMsg.width, imgMsg.height);
         }
+    }else{
+        if (imgMsg.width == 0.0f || imgMsg.height == 0.0f) {
+            imageSize = CGSizeMake(150, 100);
+        }else{
+            imageSize = CGSizeMake(imgMsg.width, imgMsg.height);
+        }
+    }
+   
+    
+    
+    [self.imageButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.chatBackgroundImageView );
+        make.left.equalTo(self.chatBackgroundImageView.mas_left ).with.offset(6);
+        if (imgMsg.width > 150) {
+            make.width.equalTo(@(150));
+            make.height.equalTo(@(150* imageSize.height/imageSize.width ));
+        }else{
+            make.width.equalTo(@(imageSize.width));
+            make.height.equalTo(@(imageSize.height));
+        }
+    }];
+    
+    [self.imageButton sd_setBackgroundImageWithURL:[NSURL URLWithString:[[self.msg.content componentsSeparatedByString:@"&"] lastObject]]  forState:UIControlStateNormal placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
     }];
 }
 
@@ -88,18 +96,7 @@
     self.imageButton.hidden = NO;
     
     BmobIMImageMessage *imgMsg = (BmobIMImageMessage *)self.msg;
-    [self.imageButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.chatBackgroundImageView );
-        make.right.equalTo(self.chatBackgroundImageView.mas_right ).with.offset(-6);
-        if (imgMsg.width > 150) {
-            make.width.equalTo(@(150));
-            make.height.equalTo(@(150* imgMsg.height/imgMsg.width));
-        }else{
-            make.width.equalTo(@(imgMsg.width));
-            make.height.equalTo(@(imgMsg.height));
-        }
-        
-    }];
+    
     
     [self.chatContentView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.avatarBackgroundImageView.mas_right).with.offset(8);
@@ -113,20 +110,40 @@
         make.edges.equalTo(self.chatContentView).insets(UIEdgeInsetsMake(0, 0, 10, 0));
     }];
     
+    CGSize imageSize ;
+    if ([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.msg.content]) {
+        UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.msg.content];
+        
+        if (imgMsg.width == 0.0f || imgMsg.height == 0.0f) {
+            imageSize = image.size;
+        }else{
+            imageSize = CGSizeMake(imgMsg.width, imgMsg.height);
+        }
+    }else{
+        if (imgMsg.width == 0.0f || imgMsg.height == 0.0f) {
+            imageSize = CGSizeMake(150, 100);
+        }else{
+            imageSize = CGSizeMake(imgMsg.width, imgMsg.height);
+        }
+    }
+    [self.imageButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.chatBackgroundImageView );
+        make.right.equalTo(self.chatBackgroundImageView.mas_right ).with.offset(-6);
+        if (imageSize.width > 150) {
+            make.width.equalTo(@(150));
+            make.height.equalTo(@(150* imageSize.height/imageSize.width));
+        }else{
+            make.width.equalTo(@(imageSize.width));
+            make.height.equalTo(@(imageSize.height));
+        }
+        
+    }];
+    
     [self.imageButton sd_setBackgroundImageWithURL:[NSURL URLWithString:self.msg.content] forState:UIControlStateNormal placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
-        [self.imageButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.chatBackgroundImageView );
-            make.right.equalTo(self.chatBackgroundImageView.mas_right ).with.offset(-6);
-            if (image.size.width > 150) {
-                make.width.equalTo(@(150));
-                make.height.equalTo(@(150* image.size.height/image.size.width));
-            }else{
-                make.width.equalTo(@(image.size.width));
-                make.height.equalTo(@(image.size.height));
-            }
-            
-        }];
+        
+        
+        
     }];
 }
 
