@@ -206,7 +206,7 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
     
     NSLog(@"%@",message.extra);
     
-    if (message.extra[KEY_SAVEDMESSAGE] && ![message.extra[KEY_SAVEDMESSAGE] boolValue]) {
+    if (message.extra[KEY_IS_TRANSIENT] && [message.extra[KEY_IS_TRANSIENT] boolValue]) {
         return;
     }
     if ([message.fromId isEqualToString:self.conversation.conversationId]) {
@@ -587,7 +587,7 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
 
     message.msgType = @"notice";
     message.conversationType = BmobIMConversationTypeSingle;
-    message.extra = @{KEY_SAVEDMESSAGE:@(NO)};
+    message.extra = @{KEY_IS_TRANSIENT:@(YES)};
     message.content = @"添加好友";
     [self.conversation sendMessage:message completion:^(BOOL isSuccessful, NSError *error) {
         NSLog(@"error %@",error.localizedDescription);

@@ -63,8 +63,23 @@
     [self.chatBackgroundImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.chatContentView).insets(UIEdgeInsetsMake(0, 0, 10, 0));
     }];
-    
-    [self.imageButton sd_setBackgroundImageWithURL:[NSURL URLWithString:self.msg.content] forState:UIControlStateNormal];
+   
+    [self.imageButton sd_setBackgroundImageWithURL:[NSURL URLWithString:[[self.msg.content componentsSeparatedByString:@"&"] lastObject]]  forState:UIControlStateNormal placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (imgMsg.width == 0.0f || imgMsg.height == 0.0f) {
+            [self.imageButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.equalTo(self.chatBackgroundImageView );
+                make.right.equalTo(self.chatBackgroundImageView.mas_right ).with.offset(-6);
+                if (image.size.width > 150) {
+                    make.width.equalTo(@(150));
+                    make.height.equalTo(@(150* image.size.height/image.size.width));
+                }else{
+                    make.width.equalTo(@(image.size.width));
+                    make.height.equalTo(@(image.size.height));
+                }
+                
+            }];
+        }
+    }];
 }
 
 
@@ -98,7 +113,21 @@
         make.edges.equalTo(self.chatContentView).insets(UIEdgeInsetsMake(0, 0, 10, 0));
     }];
     
-    [self.imageButton sd_setBackgroundImageWithURL:[NSURL URLWithString:self.msg.content] forState:UIControlStateNormal];
+    [self.imageButton sd_setBackgroundImageWithURL:[NSURL URLWithString:self.msg.content] forState:UIControlStateNormal placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        [self.imageButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.chatBackgroundImageView );
+            make.right.equalTo(self.chatBackgroundImageView.mas_right ).with.offset(-6);
+            if (image.size.width > 150) {
+                make.width.equalTo(@(150));
+                make.height.equalTo(@(150* image.size.height/image.size.width));
+            }else{
+                make.width.equalTo(@(image.size.width));
+                make.height.equalTo(@(image.size.height));
+            }
+            
+        }];
+    }];
 }
 
 @end

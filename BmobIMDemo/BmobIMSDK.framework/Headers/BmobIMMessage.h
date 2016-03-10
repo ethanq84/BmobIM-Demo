@@ -18,7 +18,7 @@
 /**
  *  是否保存在本地时定义的key
  */
-extern NSString* const KEY_SAVEDMESSAGE;
+extern NSString* const KEY_IS_TRANSIENT;
 
 /**
  *  文件类型的信息放在这里，图片@{KEY_METADATA:@{KEY_HEIGHT:@(h),KEY_WIDTH:@(w)}} 声音@{KEY_METADATA:@{KEY_DURATION:@(t)}}
@@ -82,7 +82,7 @@ extern NSString* const KEY_HEIGHT   ;
 @property (strong, nonatomic) NSString        *conversationId;
 
 /**
- *  传递额外的信息,如果不需要保存消息到本地，请在额外信息传入@{KEY_SAVEDMESSAGE:@(NO)....}
+ *  传递额外的信息,如果不需要保存消息到本地，请在额外信息传入@{KEY_IS_TRANSIENT:@(YES)....}
  */
 @property (strong, nonatomic) NSDictionary    *extra;
 

@@ -34,7 +34,6 @@
 		BE72F2EC1C5AFB76006DDFED /* RecentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72F2EB1C5AFB76006DDFED /* RecentTableViewCell.m */; };
 		BE8026411C8FBC69005B5F58 /* LocationChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8026401C8FBC69005B5F58 /* LocationChatView.m */; };
 		BE8026441C8FC325005B5F58 /* LocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8026431C8FC325005B5F58 /* LocationTableViewCell.m */; };
-		BE80264E1C902D93005B5F58 /* BmobIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE80264D1C902D93005B5F58 /* BmobIMSDK.framework */; };
 		BE8D8D871C5082D4007E0B03 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8D8D861C5082D4007E0B03 /* ChatViewController.m */; };
 		BE8D8D921C50DA7F007E0B03 /* ChatBottomControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8D8D911C50DA7F007E0B03 /* ChatBottomControlView.m */; };
 		BE8D8D941C50DA9E007E0B03 /* ChatBottomControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE8D8D931C50DA9E007E0B03 /* ChatBottomControlView.xib */; };
@@ -68,6 +67,7 @@
 		BEBB254D1C83DF5400D0DF61 /* ChatBottomContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBB254C1C83DF5400D0DF61 /* ChatBottomContentView.xib */; };
 		BEC227071C8E6C75009AF8C5 /* BmobIMMessage+SubClass.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC227061C8E6C75009AF8C5 /* BmobIMMessage+SubClass.m */; };
 		BEC6A9AF1C898979007A1268 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC6A9AE1C898979007A1268 /* CommonUtil.m */; };
+		BEC946721C911560002F6062 /* BmobIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC946711C911560002F6062 /* BmobIMSDK.framework */; };
 		BED106ED1C8D1384009CAE61 /* AudioChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = BED106EC1C8D1384009CAE61 /* AudioChatView.m */; };
 		BED106F01C8D1600009CAE61 /* AudioTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BED106EF1C8D1600009CAE61 /* AudioTableViewCell.m */; };
 		BEDBED561C5746E900CE7959 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDBED551C5746E900CE7959 /* AppManager.m */; };
@@ -148,7 +148,6 @@
 		BE8026401C8FBC69005B5F58 /* LocationChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationChatView.m; sourceTree = "<group>"; };
 		BE8026421C8FC325005B5F58 /* LocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTableViewCell.h; sourceTree = "<group>"; };
 		BE8026431C8FC325005B5F58 /* LocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableViewCell.m; sourceTree = "<group>"; };
-		BE80264D1C902D93005B5F58 /* BmobIMSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobIMSDK.framework; sourceTree = "<group>"; };
 		BE8D8D851C5082D4007E0B03 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		BE8D8D861C5082D4007E0B03 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		BE8D8D901C50DA7F007E0B03 /* ChatBottomControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBottomControlView.h; sourceTree = "<group>"; };
@@ -205,6 +204,7 @@
 		BEC227061C8E6C75009AF8C5 /* BmobIMMessage+SubClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BmobIMMessage+SubClass.m"; sourceTree = "<group>"; };
 		BEC6A9AD1C898979007A1268 /* CommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
 		BEC6A9AE1C898979007A1268 /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
+		BEC946711C911560002F6062 /* BmobIMSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobIMSDK.framework; sourceTree = "<group>"; };
 		BED106EB1C8D1384009CAE61 /* AudioChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioChatView.h; sourceTree = "<group>"; };
 		BED106EC1C8D1384009CAE61 /* AudioChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioChatView.m; sourceTree = "<group>"; };
 		BED106EE1C8D1600009CAE61 /* AudioTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioTableViewCell.h; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 				BE675B1A1C463E4B00BB2546 /* SystemConfiguration.framework in Frameworks */,
 				BE675B0B1C4639A000BB2546 /* CoreFoundation.framework in Frameworks */,
 				BE675B091C46398200BB2546 /* Foundation.framework in Frameworks */,
-				BE80264E1C902D93005B5F58 /* BmobIMSDK.framework in Frameworks */,
+				BEC946721C911560002F6062 /* BmobIMSDK.framework in Frameworks */,
 				BE675B071C46397800BB2546 /* UIKit.framework in Frameworks */,
 				BE675B051C46394B00BB2546 /* CFNetwork.framework in Frameworks */,
 				BE675B031C46394200BB2546 /* CoreGraphics.framework in Frameworks */,
@@ -391,7 +391,7 @@
 		BE675B0E1C463A3300BB2546 /* framework */ = {
 			isa = PBXGroup;
 			children = (
-				BE80264D1C902D93005B5F58 /* BmobIMSDK.framework */,
+				BEC946711C911560002F6062 /* BmobIMSDK.framework */,
 				BE675B0A1C4639A000BB2546 /* CoreFoundation.framework */,
 				BE675B081C46398200BB2546 /* Foundation.framework */,
 				BE675B061C46397800BB2546 /* UIKit.framework */,
