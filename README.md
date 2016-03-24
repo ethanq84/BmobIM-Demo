@@ -49,11 +49,11 @@
 
 | 第三方库 |     说明    | 地址 |
 |---------|------------|-----|
-| SDWebImage |图片下载|https://github.com/rs/SDWebImage|
+| SDWebImage | 图片下载 | https://github.com/rs/SDWebImage |
 | Masonry |界面布局|https://github.com/SnapKit/Masonry|
-| UITableView+FDTemplateLayoutCell |UITableView 自动计算cell高度|https://github.com/forkingdog/UITableView-FDTemplateLayoutCell|
-| UUChatTableView |显示录音时间|https://github.com/ZhipingYang/UUChatTableView|
-| AFNetworking |下载文件|https://github.com/ZhipingYang/UUChatTableView|https://github.com/AFNetworking/AFNetworking|
+| UITableView+FDTemplateLayoutCell | UITableView 自动计算cell高度 |https://github.com/forkingdog/UITableView-FDTemplateLayoutCell|
+| UUChatTableView | 显示录音时间 |https://github.com/ZhipingYang/UUChatTableView|
+| AFNetworking | 下载文件 |https://github.com/AFNetworking/AFNetworking|
 
 ## 反馈
 开发者在使用BmobIMSDK遇到的问题可以在Bmob的客服群，问答社区进行反馈或者建议。
