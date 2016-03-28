@@ -146,6 +146,9 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
             
         }];
         [self.messagesArray setArray:result];
+        
+        
+        
         [self.tableView reloadData];
         
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
@@ -523,7 +526,7 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
 
 -(void)reloadLastRow{
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0];
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 //
 }
 

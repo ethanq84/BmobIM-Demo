@@ -23,14 +23,15 @@
 
 @implementation AppDelegate
 
+#define kAppKey @"c31750019beab2b4a802ee61b1fd0e9c" //@""
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [Bmob registerWithAppKey:@"87ab0f9bee41bce86dfadd69af692873"];
+    [Bmob registerWithAppKey:kAppKey];
     
     self.sharedIM = [BmobIM sharedBmobIM];
     
-    [self.sharedIM registerWithAppKey:@"87ab0f9bee41bce86dfadd69af692873"];
+    [self.sharedIM registerWithAppKey:kAppKey];
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     self.token = @"";
