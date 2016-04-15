@@ -265,7 +265,7 @@
             }else{
                 [self showInfomation:error.localizedDescription];
             }
-        } progressBlock:^(float progress) {
+        } progressBlock:^(CGFloat progress) {
             [self showProgress:progress];
         }];
     }

@@ -71,7 +71,7 @@
         if (block) {
             block(message,error);
         }
-    } progressBlock:^(float progress) {
+    } progressBlock:^(CGFloat progress) {
         if (progressBlock) {
             progressBlock(progress);
         }
@@ -108,7 +108,7 @@
         if (block) {
             block(message,error);
         }
-    } withProgressBlock:^(float progress) {
+    } withProgressBlock:^(CGFloat progress) {
         if (progressBlock) {
             progressBlock(progress);
         }
