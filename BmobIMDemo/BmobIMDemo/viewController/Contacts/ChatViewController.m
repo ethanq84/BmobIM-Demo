@@ -466,7 +466,7 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
         
         __weak typeof(self)weakSelf = self;
         [self.conversation sendMessage:message completion:^(BOOL isSuccessful, NSError *error) {
-            [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+            [weakSelf reloadLastRow];
         
         }];
         
@@ -527,16 +527,15 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
 -(void)reloadLastRow{
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-//
+
 }
 
 -(void)scrollToBottom{
    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messagesArray.count-1 inSection:0];
-     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    
-    
-    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 #pragma mark - some action
@@ -582,7 +581,6 @@ static CGFloat  kBottomContentViewHeight = 105.0f;
         [weakSelf reloadLastRow];
     }];
     
-//    [self sendTempMessage];
 }
 
 -(void)sendTempMessage{

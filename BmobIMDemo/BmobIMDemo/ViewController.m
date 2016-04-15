@@ -92,4 +92,8 @@
 }
 
 
+-(void)main{
+    NSLog(@"123");
+}
+
 @end
