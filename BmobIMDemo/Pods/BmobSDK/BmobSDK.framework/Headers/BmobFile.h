@@ -123,6 +123,7 @@
                        progressBlock:(BmobFileBatchProgressBlock)progress
                          resultBlock:(BmobFileBatchResultBlock)block;
 
+<<<<<<< HEAD
 /**
  *  批量删除又拍云上的文件
  *
@@ -132,4 +133,6 @@
 +(void)filesDeleteBatchWithArray:(NSArray <NSString *>*)urls
                      resultBlock:(BmobFilesDeleteBlock)block;
 
+=======
+>>>>>>> origin/master
 @end

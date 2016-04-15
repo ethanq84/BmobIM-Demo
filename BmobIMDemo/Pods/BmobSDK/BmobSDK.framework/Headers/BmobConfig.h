@@ -94,7 +94,11 @@ typedef BmobFileBatchResultBlock BmobFilesDeleteBlock;
 
 UIKIT_STATIC_INLINE NSString* Version()
 {
+<<<<<<< HEAD
 	return @"1.6.9";
+=======
+	return @"1.6.8";
+>>>>>>> origin/master
 }
 
 
