@@ -46,7 +46,23 @@
     
     self.sharedIM.delegate = self;
     
+    // Override point for customization after application launch.
+    //注册推送，iOS 8的推送机制与iOS 7有所不同，这里需要分别设置
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        UIMutableUserNotificationCategory *categorys = [[UIMutableUserNotificationCategory alloc]init];
+        //注意：此处的Bundle ID要与你申请证书时填写的一致。
+        categorys.identifier=@"cn.bmob.BmobIMDemo";
 
+        UIUserNotificationSettings *userNotifiSetting = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound) categories:[NSSet setWithObjects:categorys,nil]];
+
+        [[UIApplication sharedApplication] registerUserNotificationSettings:userNotifiSetting];
+
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }else {
+        //注册远程推送
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+    }
     
     
     return YES;
@@ -73,6 +89,15 @@
         self.token = [[[string stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@"<" withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""];
         [self connectToServer];
     }
+
+    //注册成功后上传Token至服务器
+    BmobInstallation  *currentIntallation = [BmobInstallation installation];
+    [currentIntallation setDeviceTokenFromData:deviceToken];
+    [currentIntallation saveInBackground];
+}
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo{
+    NSLog(@"userInfo %@",userInfo);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

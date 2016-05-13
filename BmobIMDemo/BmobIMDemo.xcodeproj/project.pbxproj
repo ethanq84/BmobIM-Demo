@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		087AB9184032D9D9BDDF2392 /* libPods-BmobIMDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC41235336941DB235BB6368 /* libPods-BmobIMDemo.a */; };
+		88B600121316A692B7BAEE98 /* libPods-BmobIMDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0E2865255F21E776520EE3 /* libPods-BmobIMDemo.a */; };
 		BE0ABDD61C87CD6E00C0F9A3 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0ABDD41C87CD6E00C0F9A3 /* libopencore-amrnb.a */; };
 		BE0ABDD71C87CD6E00C0F9A3 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0ABDD51C87CD6E00C0F9A3 /* libopencore-amrwb.a */; };
 		BE0ABDDA1C87CD8100C0F9A3 /* amrFileCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0ABDD91C87CD8100C0F9A3 /* amrFileCodec.m */; };
@@ -99,8 +99,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AC41235336941DB235BB6368 /* libPods-BmobIMDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BmobIMDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC46BBCCA5836AC4F5BC9A16 /* Pods-BmobIMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BmobIMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BmobIMDemo/Pods-BmobIMDemo.release.xcconfig"; sourceTree = "<group>"; };
+		7AD4BAE0572F2876549B349D /* Pods-BmobIMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BmobIMDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BmobIMDemo/Pods-BmobIMDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		9636AEA406CC38836FE69576 /* Pods-BmobIMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BmobIMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BmobIMDemo/Pods-BmobIMDemo.release.xcconfig"; sourceTree = "<group>"; };
+		BB0E2865255F21E776520EE3 /* libPods-BmobIMDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BmobIMDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE0ABDCF1C87CD6100C0F9A3 /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
 		BE0ABDD01C87CD6100C0F9A3 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
 		BE0ABDD21C87CD6100C0F9A3 /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
@@ -228,7 +229,6 @@
 		BEED1DCA1C51D7DA0000512A /* ChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatView.m; sourceTree = "<group>"; };
 		BEED1DCC1C520EC90000512A /* TextChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextChatTableViewCell.h; sourceTree = "<group>"; };
 		BEED1DCD1C520EC90000512A /* TextChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextChatTableViewCell.m; sourceTree = "<group>"; };
-		F2578872A65DE8BE188DF0B6 /* Pods-BmobIMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BmobIMDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BmobIMDemo/Pods-BmobIMDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,7 +248,7 @@
 				BE675B071C46397800BB2546 /* UIKit.framework in Frameworks */,
 				BE675B051C46394B00BB2546 /* CFNetwork.framework in Frameworks */,
 				BE675B031C46394200BB2546 /* CoreGraphics.framework in Frameworks */,
-				087AB9184032D9D9BDDF2392 /* libPods-BmobIMDemo.a in Frameworks */,
+				88B600121316A692B7BAEE98 /* libPods-BmobIMDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,18 +275,9 @@
 				BE6065AA1C86C9160056C9E9 /* AVFoundation.framework */,
 				BEB7989C1C4DDAEC005C0C5A /* CoreText.framework */,
 				BEB7989A1C4DDAE6005C0C5A /* QuartzCore.framework */,
-				AC41235336941DB235BB6368 /* libPods-BmobIMDemo.a */,
+				BB0E2865255F21E776520EE3 /* libPods-BmobIMDemo.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A79D75E7B25C37EF2751A2FA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F2578872A65DE8BE188DF0B6 /* Pods-BmobIMDemo.debug.xcconfig */,
-				AC46BBCCA5836AC4F5BC9A16 /* Pods-BmobIMDemo.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		BE0ABDCD1C87CD4D00C0F9A3 /* amr */ = {
@@ -330,7 +321,7 @@
 				BE675AF31C46391A00BB2546 /* BmobIMDemoUITests */,
 				BE675ACD1C46391A00BB2546 /* Products */,
 				890B175884349FFBBE419FAB /* Frameworks */,
-				A79D75E7B25C37EF2751A2FA /* Pods */,
+				E2A9E3958C5610FA52B9675B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -621,6 +612,15 @@
 			name = contact;
 			sourceTree = "<group>";
 		};
+		E2A9E3958C5610FA52B9675B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7AD4BAE0572F2876549B349D /* Pods-BmobIMDemo.debug.xcconfig */,
+				9636AEA406CC38836FE69576 /* Pods-BmobIMDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -628,12 +628,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE675AF91C46391A00BB2546 /* Build configuration list for PBXNativeTarget "BmobIMDemo" */;
 			buildPhases = (
-				130474032A223B95BE5EB4AD /* Check Pods Manifest.lock */,
+				ACEA909BD5246DA0A679B6C0 /* Check Pods Manifest.lock */,
 				BE675AC81C46391A00BB2546 /* Sources */,
 				BE675AC91C46391A00BB2546 /* Frameworks */,
 				BE675ACA1C46391A00BB2546 /* Resources */,
-				07D34C0B8E0401ED797A497D /* Embed Pods Frameworks */,
-				79ED439D78421640E7D99A34 /* Copy Pods Resources */,
+				F33704C8AB57C51F241924F6 /* Embed Pods Frameworks */,
+				4EBF934FD10700179EDA5832 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -759,22 +759,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07D34C0B8E0401ED797A497D /* Embed Pods Frameworks */ = {
+		4EBF934FD10700179EDA5832 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BmobIMDemo/Pods-BmobIMDemo-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BmobIMDemo/Pods-BmobIMDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		130474032A223B95BE5EB4AD /* Check Pods Manifest.lock */ = {
+		ACEA909BD5246DA0A679B6C0 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -789,19 +789,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		79ED439D78421640E7D99A34 /* Copy Pods Resources */ = {
+		F33704C8AB57C51F241924F6 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BmobIMDemo/Pods-BmobIMDemo-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BmobIMDemo/Pods-BmobIMDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -993,7 +993,7 @@
 		};
 		BE675AFA1C46391A00BB2546 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2578872A65DE8BE188DF0B6 /* Pods-BmobIMDemo.debug.xcconfig */;
+			baseConfigurationReference = 7AD4BAE0572F2876549B349D /* Pods-BmobIMDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1028,7 +1028,7 @@
 		};
 		BE675AFB1C46391A00BB2546 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC46BBCCA5836AC4F5BC9A16 /* Pods-BmobIMDemo.release.xcconfig */;
+			baseConfigurationReference = 9636AEA406CC38836FE69576 /* Pods-BmobIMDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";

@@ -78,21 +78,21 @@
                                      block:^(BmobUser *user, NSError *error) {
                                          if (user) {
                                              
-                                             BmobUser *user = [BmobUser getCurrentUser];
-                                             
-                                             [user setObject:@"kaka" forKey:@"nickname"];
-                                             
-                                             [user updateInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
-                                                 
-                                                 if (isSuccessful){
-                                                     NSLog(@"修改昵称 successfully");
-                                                     
-                                                     [self.navigationController popViewControllerAnimated:YES];
-                                                 } else {
-                                                     NSLog(@"修改昵称 %@",error);
-                                                 }
-                                             }];
-                                             
+//                                             BmobUser *user = [BmobUser getCurrentUser];
+//                                             
+//                                             [user setObject:@"kaka" forKey:@"nickname"];
+//                                             
+//                                             [user updateInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+//                                                 
+//                                                 if (isSuccessful){
+//                                                     NSLog(@"修改昵称 successfully");
+//                                                     
+//                                                     [self.navigationController popViewControllerAnimated:YES];
+//                                                 } else {
+//                                                     NSLog(@"修改昵称 %@",error);
+//                                                 }
+//                                             }];
+
                                              [self hideLoading];
                                              [[NSNotificationCenter defaultCenter] postNotificationName:@"Login" object:user.objectId];
                                              [self dismissViewControllerAnimated:YES completion:nil];
