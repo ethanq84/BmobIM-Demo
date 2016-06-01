@@ -46,6 +46,8 @@
     [super viewDidAppear:animated];
     if ([BmobUser getCurrentUser]) {
         self.logoutButton.enabled = YES;
+        self.user = [BmobUser getCurrentUser];
+        [self.tableView reloadData];
     }else{
         self.logoutButton.enabled = NO;
     }
@@ -65,6 +67,7 @@
         [BmobUser logout];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Logout" object:nil];
         [self showInfomation:@"退出成功"];
+        [self toLoginVC];
     }else{
         [self showInfomation:@"未登录"];
     }
@@ -359,6 +362,18 @@
     } else {
         [self showInfomation:@"无可用摄像头"];
     }
+}
+
+
+-(void)toLoginVC{
+
+    UINavigationController *loginNC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginNC"];
+    //    UINavigationController *lnc = [[UINavigationController alloc] initWithRootViewController:loginVC];
+    [self presentViewController:loginNC animated:YES completion:nil];
+    [loginNC.navigationBar setBackgroundImage:[UIImage imageNamed:@"top_bar"] forBarMetrics:UIBarMetricsDefault];
+    NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]};
+    loginNC.navigationBar.titleTextAttributes = dic;
+    
 }
 
 @end
