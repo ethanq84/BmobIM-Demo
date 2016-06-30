@@ -13,7 +13,6 @@
 		BE0ABDDA1C87CD8100C0F9A3 /* amrFileCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0ABDD91C87CD8100C0F9A3 /* amrFileCodec.m */; };
 		BE0ABDDD1C87D56D00C0F9A3 /* RecordAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0ABDDC1C87D56D00C0F9A3 /* RecordAudio.m */; };
 		BE0ABDEA1C882A9200C0F9A3 /* UUProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0ABDE91C882A9200C0F9A3 /* UUProgressHUD.m */; };
-		BE148F431CFE74E50052960C /* BmobIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE148F421CFE74E50052960C /* BmobIMSDK.framework */; };
 		BE30F9FB1C5CA5780082F6B4 /* BmobIMUserInfo+BmobUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BE30F9FA1C5CA5780082F6B4 /* BmobIMUserInfo+BmobUser.m */; };
 		BE6065A31C86922C0056C9E9 /* TextChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6065A21C86922C0056C9E9 /* TextChatView.m */; };
 		BE6065A61C8694770056C9E9 /* ImageChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6065A51C8694770056C9E9 /* ImageChatView.m */; };
@@ -77,6 +76,7 @@
 		BEDEF1341C4F860C002EC04B /* SystemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDEF1331C4F860C002EC04B /* SystemTableViewCell.m */; };
 		BEDEF1371C4F868B002EC04B /* MessageService.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDEF1361C4F868B002EC04B /* MessageService.m */; };
 		BEDEF13C1C4F88AD002EC04B /* SysMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BEDEF13B1C4F88AD002EC04B /* SysMessage.m */; };
+		BEE2FE561D24C0EA00773004 /* BmobIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE2FE551D24C0EA00773004 /* BmobIMSDK.framework */; };
 		BEED1DCB1C51D7DA0000512A /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED1DCA1C51D7DA0000512A /* ChatView.m */; };
 		BEED1DCE1C520EC90000512A /* TextChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED1DCD1C520EC90000512A /* TextChatTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -114,7 +114,6 @@
 		BE0ABDDC1C87D56D00C0F9A3 /* RecordAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordAudio.m; sourceTree = "<group>"; };
 		BE0ABDE81C882A9200C0F9A3 /* UUProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUProgressHUD.h; sourceTree = "<group>"; };
 		BE0ABDE91C882A9200C0F9A3 /* UUProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUProgressHUD.m; sourceTree = "<group>"; };
-		BE148F421CFE74E50052960C /* BmobIMSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobIMSDK.framework; sourceTree = "<group>"; };
 		BE30F9F91C5CA5780082F6B4 /* BmobIMUserInfo+BmobUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BmobIMUserInfo+BmobUser.h"; sourceTree = "<group>"; };
 		BE30F9FA1C5CA5780082F6B4 /* BmobIMUserInfo+BmobUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BmobIMUserInfo+BmobUser.m"; sourceTree = "<group>"; };
 		BE6065A11C86922C0056C9E9 /* TextChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextChatView.h; sourceTree = "<group>"; };
@@ -225,6 +224,7 @@
 		BEDEF1361C4F868B002EC04B /* MessageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageService.m; sourceTree = "<group>"; };
 		BEDEF13A1C4F88AD002EC04B /* SysMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMessage.h; sourceTree = "<group>"; };
 		BEDEF13B1C4F88AD002EC04B /* SysMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMessage.m; sourceTree = "<group>"; };
+		BEE2FE551D24C0EA00773004 /* BmobIMSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobIMSDK.framework; sourceTree = "<group>"; };
 		BEED1DC91C51D7DA0000512A /* ChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
 		BEED1DCA1C51D7DA0000512A /* ChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatView.m; sourceTree = "<group>"; };
 		BEED1DCC1C520EC90000512A /* TextChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextChatTableViewCell.h; sourceTree = "<group>"; };
@@ -244,7 +244,7 @@
 				BE675B1A1C463E4B00BB2546 /* SystemConfiguration.framework in Frameworks */,
 				BE675B0B1C4639A000BB2546 /* CoreFoundation.framework in Frameworks */,
 				BE675B091C46398200BB2546 /* Foundation.framework in Frameworks */,
-				BE148F431CFE74E50052960C /* BmobIMSDK.framework in Frameworks */,
+				BEE2FE561D24C0EA00773004 /* BmobIMSDK.framework in Frameworks */,
 				BE675B071C46397800BB2546 /* UIKit.framework in Frameworks */,
 				BE675B051C46394B00BB2546 /* CFNetwork.framework in Frameworks */,
 				BE675B031C46394200BB2546 /* CoreGraphics.framework in Frameworks */,
@@ -387,7 +387,7 @@
 		BE675B0E1C463A3300BB2546 /* framework */ = {
 			isa = PBXGroup;
 			children = (
-				BE148F421CFE74E50052960C /* BmobIMSDK.framework */,
+				BEE2FE551D24C0EA00773004 /* BmobIMSDK.framework */,
 				BE675B0A1C4639A000BB2546 /* CoreFoundation.framework */,
 				BE675B081C46398200BB2546 /* Foundation.framework */,
 				BE675B061C46397800BB2546 /* UIKit.framework */,
@@ -998,6 +998,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BmobIMDemo",
@@ -1033,6 +1034,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BmobIMDemo",
